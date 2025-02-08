@@ -17,7 +17,7 @@ export class TestUserComponent implements OnInit {
   }
 
   logUsers() {
-    console.log(`Пользователи получены:`, this.allUsers);
+    console.log(`Пользователи пoлучены:`, this.allUsers);
   }
 
   createUser(name: string, email: string) {
