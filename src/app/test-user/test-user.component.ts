@@ -12,12 +12,8 @@ export class TestUserComponent implements OnInit {
   allUsers: User[] = [];
 
   ngOnInit(): void {
-    this.allUsers = this.getUser();
+    this.allUsers = this.userService.getUsers();
     console.log('Initial users:', this.allUsers);
-  }
-
-  getUser(): any[] {
-    return this.userService.getUsers();
   }
 
   logUsers() {
@@ -26,24 +22,19 @@ export class TestUserComponent implements OnInit {
 
   createUser(name: string, email: string) {
     this.userService.createUser(name, email);
-    this.loadUsers();
+    this.allUsers = this.userService.getUsers();
     console.log('Created user');
   }
 
   deleteUser(id: number) {
     this.userService.deleteUser(id);
-    this.loadUsers();
-    console.log('Deleted user');
-  }
-
-  loadUsers(): void {
     this.allUsers = this.userService.getUsers();
-    console.log('Initial users:', this.allUsers);
+    console.log('Deleted user');
   }
 
   updateUser(id: number) {
     this.userService.updateUser(id, { name: 'Boddy' });
-    this.loadUsers();
+    this.allUsers = this.userService.getUsers();
     console.log('Updated user');
   }
 }
